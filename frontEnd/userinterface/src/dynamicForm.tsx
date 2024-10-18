@@ -188,7 +188,7 @@ const DynamicForm: React.FC = () => {
                     />
                 </Card>
             </div>
-            <Link to={"/home"} style={{ color: 'red', paddingLeft: '650px', paddingBottom: '100px' }}>Click Here to go to Titles Page</Link>
+            <Link to={"/title"} style={{ color: 'red', paddingLeft: '650px', paddingBottom: '100px' }}>Click Here to go to Titles Page</Link>
         </>
     );
 };
