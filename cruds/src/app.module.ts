@@ -8,6 +8,7 @@ import { titleEntity } from './title/title.entity';
 import { titleMod } from './title/title.module';
 import { Users } from './users/entity/users.entity';
 import { UserModule } from './users/users.module';
+import { AuthModule } from './authorization/auth.module';
 // import { GunModule } from './gun/gun.module';
 
 @Module({
@@ -20,14 +21,15 @@ import { UserModule } from './users/users.module';
       password: '',
       database: 'test',
       entities: [
-        // Ite,titleEntity
+        Ite, titleEntity,
         Users
       ],
       synchronize: false,
     }),
-    // Itm,
-    // titleMod
-    UserModule
+    Itm,
+    titleMod,
+    UserModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

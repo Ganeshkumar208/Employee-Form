@@ -6,6 +6,7 @@ import { Users } from './entity/users.entity';
 
 @Injectable()
 export class UserService {
+
     constructor(
         @InjectRepository(Users)
         private userRepository: Repository<Users>,
@@ -30,5 +31,9 @@ export class UserService {
 
     deleteUser(userId: number) {
         return this.userRepository.delete(userId);
+    }
+
+    findByEmail(email: string) {
+        return this.userRepository.findOne({ where: { email } });
     }
 }

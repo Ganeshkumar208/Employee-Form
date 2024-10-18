@@ -1,27 +1,29 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-// import { AuthContext } from './AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    //   const { setToken } = useContext(AuthContext);
-    const navigate = useNavigate();
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/auth/login', {
+            const response = await axios.post('http://localhost:5566/auth/login', {
                 email,
                 password,
             });
-            //   setToken(response.data.token);
+            localStorage.setItem('token', response.data.access_token);
             setMessage('Login successful');
-            navigate('/users');
+            navigate('/home')
         } catch (error) {
-            setMessage('Invalid credentials');
+            if (error.response && error.response.data) {
+                setMessage(error.response.data.message || 'Invalid credentials');
+            } else {
+                setMessage('An error occurred. Please try again.');
+            }
         }
     };
 
@@ -31,22 +33,19 @@ const Login: React.FC = () => {
             <input
                 type="email"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 required
             />
             <input
                 type="password"
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
             />
             <button type="submit">Login</button>
             <p>{message}</p>
-            <p>
-                Don't have an account? <Link to="/register">Register here</Link>
-            </p>
         </form>
     );
 };

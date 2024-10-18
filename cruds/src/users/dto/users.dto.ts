@@ -1,11 +1,14 @@
-import { IsString, MinLength, MaxLength } from 'class-validator';
+import { IsEmail, IsString } from 'class-validator';
+import { Unique } from 'typeorm';
+
+@Unique(['email'])
 export class UsersDto {
     @IsString()
-    @MinLength(4)
-    @MaxLength(20)
-    username: string;
+    name: string;
+
+    @IsEmail()
+    email: string;
 
     @IsString()
-    @MinLength(8)
     password: string;
 }
