@@ -103,7 +103,7 @@ export const TitleNew: React.FC = () => {
                     </div>
                 </Form>
                 <Table columns={columns} dataSource={titles} />
-                <Link to="/home">Click Here to go to Home Page</Link>
+                <Link to="/navbar/home">Click Here to go to Home Page</Link>
             </div>
         </>
     );

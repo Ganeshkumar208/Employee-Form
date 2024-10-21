@@ -22,7 +22,6 @@ const DynamicForm: React.FC = () => {
     const [data, setData] = useState<Record[]>();
     const [dropdown, setdropdown] = useState<any[]>([]);
 
-
     useEffect(() => {
         showAll();
     }, []);
@@ -154,7 +153,7 @@ const DynamicForm: React.FC = () => {
         <>
             <div style={{ display: 'flex' }}>
                 <Form className="FormContainer" style={{ width: '30%', marginLeft: '70px', height: '500px', marginTop: '20px' }}>
-                    <Card style={{ height: '640px', backgroundColor: 'darkgray', boxShadow: '2px 2px 15px black' }}>
+                    <Card style={{ height: '640px', backgroundColor: 'gray', boxShadow: '2px 2px 15px black' }}>
                         <div style={{ color: '#FFF4A3', fontWeight: 'bold' }}>
                             <div style={{ color: '#C2571A', fontWeight: 'bolder', fontSize: '19px' }}>Add Employee Data</div>
                             <div><p>Id </p><Input name='id' placeholder='Enter Id' onChange={titleChange} value={formData.id || ''} /></div>
@@ -188,7 +187,7 @@ const DynamicForm: React.FC = () => {
                     />
                 </Card>
             </div>
-            <Link to={"/title"} style={{ color: 'red', paddingLeft: '650px', paddingBottom: '100px' }}>Click Here to go to Titles Page</Link>
+            <Link to={"/navbar/title"} style={{ color: 'red', paddingLeft: '650px', paddingBottom: '100px' }}>Click Here to go to Titles Page</Link>
         </>
     );
 };

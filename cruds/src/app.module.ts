@@ -9,7 +9,7 @@ import { titleMod } from './title/title.module';
 import { Users } from './users/entity/users.entity';
 import { UserModule } from './users/users.module';
 import { AuthModule } from './authorization/auth.module';
-// import { GunModule } from './gun/gun.module';
+import { ProtectModule } from './protect/protect.module';
 
 @Module({
   imports: [
@@ -29,7 +29,8 @@ import { AuthModule } from './authorization/auth.module';
     Itm,
     titleMod,
     UserModule,
-    AuthModule
+    AuthModule,
+    ProtectModule
   ],
   controllers: [AppController],
   providers: [AppService],
