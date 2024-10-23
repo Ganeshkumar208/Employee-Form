@@ -105,7 +105,7 @@ const Login: React.FC = () => {
                 </div>
                 <div className='card'>
                     <Form onFinish={handleRegisterSubmit} style={{ width: '100%', textAlign: 'center' }}>
-                        <h2 className='login'>Register</h2>
+                        <h2 className='login'>Register Account</h2>
                         <Form.Item
                             name="name"
                             rules={[{ required: true, message: 'Please enter your name' }]}
