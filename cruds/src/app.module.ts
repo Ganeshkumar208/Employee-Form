@@ -15,10 +15,10 @@ import { ProtectModule } from './protect/protect.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'dev.schemaxtech.in',
+      host: 'localhost',
       port: 3306,
-      username: 'sa_dev_user',
-      password: 'Schemax@23',
+      username: 'root',
+      password: '',
       database: 'test',
       entities: [
         Ite, titleEntity,
