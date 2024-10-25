@@ -23,7 +23,7 @@ const Login: React.FC = () => {
             localStorage.setItem('token', response.data.access_token);
             setMessage('Login successful');
             setStatus('success');
-            setTimeout(() => navigate('/navbar/home'), 750000);
+            setTimeout(() => navigate('/navbar/home'), 2000);
         } catch (error) {
             setStatus('error');
             if (error.response && error.response.data) {
