@@ -16,10 +16,23 @@ export class UserService {
         return this.userRepository.find();
     }
 
-    createUser(createUserDto: UsersDto): Promise<Users> {
-        const newUser = this.userRepository.create(createUserDto);
-        return this.userRepository.save(newUser);
+    async createUser(createUserDto: UsersDto): Promise<Users> {
+        try {
+            const { email } = createUserDto;
+            const existUser = await this.userRepository.findOne({
+                where: { email }
+            });
+            if (existUser) {
+                throw new Error('User with this email already exists');
+            }
+
+            const newUser = this.userRepository.create(createUserDto);
+            return this.userRepository.save(newUser);
+        } catch (error) {
+            throw new Error('Error Registering User');
+        }
     }
+
 
     updateUser(updateUserDto: UsersDto, userId: number) {
         return this.userRepository.update(userId, updateUserDto);

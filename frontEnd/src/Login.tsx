@@ -23,7 +23,11 @@ const Login: React.FC = () => {
             localStorage.setItem('token', response.data.access_token);
             setMessage('Login successful');
             setStatus('success');
-            setTimeout(() => navigate('/navbar/home'), 2000);
+            setTimeout(() => {
+                setMessage('');
+                setStatus('');
+                navigate('/navbar/home');
+            }, 2000);
         } catch (error) {
             setStatus('error');
             if (error.response && error.response.data) {
@@ -31,6 +35,10 @@ const Login: React.FC = () => {
             } else {
                 setMessage('An error occurred. Please try again.');
             }
+            setTimeout(() => {
+                setMessage('');
+                setStatus('');
+            }, 2000);
         }
     };
 
@@ -45,6 +53,10 @@ const Login: React.FC = () => {
             setMessage('Registration successful');
             setStatus('success');
             setIsRegistering(false);
+            setTimeout(() => {
+                setMessage('');
+                setStatus('');
+            }, 2000);
         } catch (error) {
             setStatus('error');
             if (error.response && error.response.data) {
@@ -54,6 +66,7 @@ const Login: React.FC = () => {
             }
         }
     };
+
 
     return (
         <div
@@ -126,6 +139,7 @@ const Login: React.FC = () => {
                             <Input.Password
                                 className='input'
                                 value={password}
+                                style={{ color: 'white' }}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
                             />
@@ -137,7 +151,7 @@ const Login: React.FC = () => {
                         </Form.Item>
                         <p>
                             Don't have an account?{' '}
-                            <a href="#register-here" onClick={() => setIsRegistering(true)}>
+                            <a href="#register-here" onClick={() => setIsRegistering(true)} style={{ color: '#F24405', fontWeight: 'bolder' }}>
                                 Register Here
                             </a>
                         </p>
@@ -188,7 +202,7 @@ const Login: React.FC = () => {
                         </Form.Item>
                         <p>
                             Already have an account?{' '}
-                            <a href="#login" onClick={() => setIsRegistering(false)}>
+                            <a href="#login" onClick={() => setIsRegistering(false)} style={{ color: '#9EF8EE', fontWeight: 'bolder' }}>
                                 Login Here
                             </a>
                         </p>
