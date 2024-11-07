@@ -38,7 +38,7 @@ const DynamicForm: React.FC = () => {
     }, []);
 
     const onFinish = () => {
-        const reqFields = ['id', 'name', 'title', 'company', 'Experience', 'salary']
+        const reqFields = ['name', 'title', 'company', 'Experience', 'salary']
         const isValid = reqFields.every(field => formData[field])
         if (!isValid) {
             message.error("plz fill all fields");
