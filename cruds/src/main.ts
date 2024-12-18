@@ -1,19 +1,27 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { Logger } from '@nestjs/common';
 
 const cors = require('cors');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.use(cors());
   const config = new DocumentBuilder()
-    .setTitle('user example')
-    .setDescription('The user API description')
+    .setTitle('Nest App')
+    .setDescription('The Nest API description')
     .setVersion('1.0')
+    .addTag('Nest Swagger Ui')
     .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory);
+
+  app.use(cors());
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
   await app.listen(5566);
+  Logger.log(
+    `🚀 Application is running on: http://localhost:5566/api`
+  );
 }
+
 bootstrap();
