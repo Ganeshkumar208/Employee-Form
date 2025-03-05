@@ -139,7 +139,7 @@ const Login: React.FC = () => {
                             <Input.Password
                                 className='input'
                                 value={password}
-                                style={{ color: 'white' }}
+                                style={{ color: 'black' }}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
                             />
